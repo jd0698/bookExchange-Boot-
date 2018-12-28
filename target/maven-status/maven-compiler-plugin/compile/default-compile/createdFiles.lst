@@ -1,0 +1,14 @@
+com\masterBook\model\UserDataVO.class
+com\masterBook\controller\AdminController.class
+com\masterBook\model\BookDataVO.class
+com\masterBook\SpringBootApp.class
+com\masterBook\dao\UserDAO.class
+com\masterBook\HibernateConfiguration.class
+com\masterBook\model\AdminDataVO.class
+com\masterBook\service\BookService.class
+com\masterBook\service\UserService.class
+com\masterBook\dao\BookDAO.class
+com\masterBook\controller\BookController.class
+com\masterBook\controller\UserController.class
+com\masterBook\dao\AdminDAO.class
+com\masterBook\service\AdminService.class
