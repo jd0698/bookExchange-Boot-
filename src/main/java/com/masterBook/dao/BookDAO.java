@@ -3,6 +3,8 @@ package com.masterBook.dao;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.validation.constraints.Null;
+
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +60,15 @@ public class BookDAO {
 	public void saveBookData(BookDataVO data) {
 		Session session = sessionFactory.getCurrentSession();
 		session.save(data);
+	}
+	
+	public int numberOfBooksByUser(long idOfUser) {
+		Session session = sessionFactory.getCurrentSession();
+		Query query = session.createQuery("SELECT Max(id) fROM BookDataVO WHERE idOfUser =" +idOfUser);
+		int numberOfBooks = 0;
+		if(query.uniqueResult() != null) {								//unique result will return null if table is empty
+			numberOfBooks = (int)query.uniqueResult();
+		}
+		return numberOfBooks;
 	}
 }

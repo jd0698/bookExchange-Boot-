@@ -19,7 +19,6 @@ th, td {
 <body>
 	<br>
 	<form action="homePage">
-<!-- 		<input type="hidden" name="pageKey" value="showBookInfo"/> -->
     	<input type="submit" value="Home Page" />
 	</form>
 	<br><br><br>
@@ -50,6 +49,8 @@ th, td {
     		<td>${requestScope.bookDetails.address}</td>
   		</tr>
 	</table>
+	<img alt="error" src="${requestScope.bookDetails.pathOfImage}" />
+	<img alt="error" src="\bookExchange(Boot)\src\main\webapp\userFile\BookImage\1\1_.jpg" />
 	
 </body>
 </html>

@@ -12,12 +12,10 @@
 
 	<br>
 	<form action="homePage">
-<!-- 		<input type="hidden" name="pageKey" value="UploadBook"/> -->
 		<input type="submit" value="Home Page"/>
 	</form>
 	<br><br>
-	<f:form action="saveBookData" method="post" modelAttribute="bookDataForm">
-<!-- 		<input type="hidden" name="pageKey" value="UploadBook"/> -->
+	<f:form action="saveBookData" method="post" modelAttribute="bookDataForm" enctype="multipart/form-data">
 		<f:hidden path="idOfUser" value="${sessionScope.userData.id}"/>
 		<table>
 			<tr>
@@ -48,6 +46,12 @@
 			<tr>
 				<td>Address:</td>
 				<td><f:textarea path="address" rows="4" cols="20"></f:textarea></td>
+			</tr>
+			<tr>
+				<td>Upload Image</td>
+				<td>
+					<input type="file" name="file" accept="image/*"/>
+				</td>
 			</tr>
 			<tr>
 				<td>

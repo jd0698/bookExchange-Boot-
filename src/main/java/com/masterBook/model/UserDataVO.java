@@ -17,6 +17,13 @@ public class UserDataVO {
 	private String email;
 	private long number;
 	private String password;
+	private int numberOfBooks;
+	public int getNumberOfBooks() {
+		return numberOfBooks;
+	}
+	public void setNumberOfBooks(int numberOfBooks) {
+		this.numberOfBooks = numberOfBooks;
+	}
 	public int getId() {
 		return id;
 	}

@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.masterBook.service.BookService;
@@ -53,11 +55,6 @@ public class BookController {
 		return mv;
 	}
 	
-//	@RequestMapping(value="showAllBooksOfUser")
-//	public String showAllBooksOfUser() {
-//		return "ShowAllBooksOfUser";
-//	}
-	
 	@RequestMapping(value="updateBookData")
 	public ModelAndView updateBookData(@ModelAttribute BookDataVO bookDataUpdateForm , HttpSession session) {
 		System.out.println(bookDataUpdateForm.getId());
@@ -70,11 +67,9 @@ public class BookController {
 	public ModelAndView showBooks() {
 		ArrayList<BookDataVO> listOfAllBooks = null;
 		listOfAllBooks = bookService.getAllBooksFromDb();
-		
 		ModelAndView mv = new ModelAndView();
 		mv.setViewName("ShowAllBooks");
-		mv.addObject("listOfAllBooks", listOfAllBooks);
-		
+		mv.addObject("listOfAllBooks", listOfAllBooks);	
 		return mv;
 	}
 	
@@ -99,8 +94,10 @@ public class BookController {
 	}
 	
 	@RequestMapping(value="saveBookData" , method=RequestMethod.POST)
-	public String submitBookData(@ModelAttribute() BookDataVO bookDataForm) {
-		bookService.saveBookData(bookDataForm);
-		return "redirect:/homePage";		//		return new ModelAndView("UserHome");
+	public String submitBookData(@ModelAttribute() BookDataVO bookDataForm,@RequestParam("file") MultipartFile file,HttpSession session) {
+		final String UPLOADED_FOLDER = session.getServletContext().getRealPath("/");
+		UserDataVO userDataVO = (UserDataVO)session.getAttribute("userData");
+		bookService.saveBookData(bookDataForm,file,UPLOADED_FOLDER,userDataVO.getId());
+		return "redirect:/homePage";
 	}
 }

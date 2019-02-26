@@ -1,5 +1,6 @@
 package com.masterBook.model;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -16,10 +17,18 @@ public class BookDataVO {
 	private String title;
 	private String author;
 	private String pubYear;
+	@Column(length = 60000)
 	private String additionalInfo;
 	private	String bookCondition;
 	private String address;
+	private String pathOfImage;
 	
+	public String getPathOfImage() {
+		return pathOfImage;
+	}
+	public void setPathOfImage(String pathOfImage) {
+		this.pathOfImage = pathOfImage;
+	}
 	public int getIdOfUser() {
 		return idOfUser;
 	}
